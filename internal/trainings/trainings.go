@@ -31,7 +31,7 @@ func (t *Training) Parse(datastring string) (err error) {
 	}
 	t.TrainingType = datastrings[1]
 	if t.TrainingType != "Ходьба" && t.TrainingType != "Бег" {
-		return fmt.Errorf("unacceptable type of training: %s", t.TrainingType)
+		return fmt.Errorf("неизвестный тип тренировки: %s", t.TrainingType)
 	}
 
 	t.Duration, err = time.ParseDuration(datastrings[2])
