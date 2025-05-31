@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Ruzzt/5sprint/internal/personaldata"
-	"github.com/Ruzzt/5sprint/internal/spentenergy"
+	"github.com/Yandex-Practicum/tracker/internal/personaldata"
+	"github.com/Yandex-Practicum/tracker/internal/spentenergy"
 )
 
 type Training struct {
