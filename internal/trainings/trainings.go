@@ -26,6 +26,9 @@ func (t *Training) Parse(datastring string) (err error) {
 	if err != nil {
 		return fmt.Errorf("invalid steps count: %w", err)
 	}
+	if t.Steps <= 0 {
+		return fmt.Errorf("количество шагов должно быть положительным")
+	}
 	t.TrainingType = datastrings[1]
 	if t.TrainingType != "Ходьба" && t.TrainingType != "Бег" {
 		return fmt.Errorf("unacceptable type of training: %s", t.TrainingType)
@@ -34,6 +37,9 @@ func (t *Training) Parse(datastring string) (err error) {
 	t.Duration, err = time.ParseDuration(datastrings[2])
 	if err != nil {
 		return fmt.Errorf("time parsing error: %w", err)
+	}
+	if t.Duration <= 0 {
+		return fmt.Errorf("продолжительность должна быть положительной")
 	}
 
 	return nil
@@ -64,7 +70,7 @@ func (t Training) ActionInfo() (string, error) {
 			"Длительность: %.2f ч.\n"+
 			"Дистанция: %.2f км.\n"+
 			"Скорость: %.2f км/ч\n"+
-			"Сожгли калорий: %.2f",
+			"Сожгли калорий: %.2f\n",
 		t.TrainingType,
 		t.Duration.Hours(),
 		distance,

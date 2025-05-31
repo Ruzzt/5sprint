@@ -27,8 +27,8 @@ func (ds *DaySteps) Parse(datastring string) (err error) {
 	if err != nil {
 		return fmt.Errorf("ошибка парсинга количества шагов: %w", err)
 	}
-	if ds.Steps < 0 {
-		return fmt.Errorf("количество шагов не может быть отрицательным")
+	if ds.Steps <= 0 {
+		return fmt.Errorf("количество шагов должно быть положительным")
 	}
 
 	// Парсим продолжительность
@@ -57,7 +57,7 @@ func (ds DaySteps) ActionInfo() (string, error) {
 	result := fmt.Sprintf(
 		"Количество шагов: %d.\n"+
 			"Дистанция составила %.2f км.\n"+
-			"Вы сожгли %.2f ккал.",
+			"Вы сожгли %.2f ккал.\n",
 		ds.Steps,
 		distance,
 		calories,
