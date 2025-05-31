@@ -18,7 +18,6 @@ type Training struct {
 }
 
 func (t *Training) Parse(datastring string) (err error) {
-	// TODO: реализовать функцию
 	datastrings := strings.Split(datastring, ",")
 	if len(datastrings) != 3 {
 		return fmt.Errorf("the length is less than 3")
@@ -38,7 +37,6 @@ func (t *Training) Parse(datastring string) (err error) {
 	}
 
 	return nil
-
 }
 
 func (t Training) ActionInfo() (string, error) {
@@ -75,4 +73,10 @@ func (t Training) ActionInfo() (string, error) {
 	)
 
 	return result, nil
+}
+
+func (t Training) Print() {
+	fmt.Printf("Имя: %s\n", t.Name)
+	fmt.Printf("Вес: %.2f кг.\n", t.Weight)
+	fmt.Printf("Рост: %.2f м.\n\n", t.Height)
 }

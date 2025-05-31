@@ -65,3 +65,9 @@ func (ds DaySteps) ActionInfo() (string, error) {
 
 	return result, nil
 }
+
+func (ds DaySteps) Print() {
+	fmt.Printf("Имя: %s\n", ds.Name)
+	fmt.Printf("Вес: %.2f кг.\n", ds.Weight)
+	fmt.Printf("Рост: %.2f м.\n\n", ds.Height)
+}
