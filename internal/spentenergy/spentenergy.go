@@ -11,6 +11,7 @@ const (
 	minInH                     = 60   // количество минут в часе.
 	stepLengthCoefficient      = 0.45 // коэффициент для расчета длины шага на основе роста.
 	walkingCaloriesCoefficient = 0.5  // коэффициент для расчета калорий при ходьбе.
+	runningCaloriesCoefficient = 1.0  // коэффициент для расчета калорий при беге.
 )
 
 func WalkingSpentCalories(steps int, weight, height float64, duration time.Duration) (float64, error) {
@@ -46,8 +47,7 @@ func RunningSpentCalories(steps int, weight, height float64, duration time.Durat
 	speed := MeanSpeed(steps, height, duration)
 	minutes := duration.Minutes()
 	countCalories := speed * weight * minutes / 60
-	return walkingCaloriesCoefficient * countCalories, nil
-
+	return runningCaloriesCoefficient * countCalories, nil
 }
 
 func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
@@ -64,5 +64,4 @@ func MeanSpeed(steps int, height float64, duration time.Duration) float64 {
 func Distance(steps int, height float64) float64 {
 	lenStep := stepLengthCoefficient * height
 	return (float64(steps) * lenStep) / mInKm
-
 }
